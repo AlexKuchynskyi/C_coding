@@ -1,0 +1,18 @@
+ /**
+ * Shows the work of sprintf() 
+ * set malloc() argument in value: "%i.jpg" + 1.
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(void)
+{
+    char *file_name = malloc(7);
+    for(int i = 0; i < 20; i++)
+    {
+        sprintf(file_name, "%02i.txt", i);//send number of file *.txt to a string pointed by *file_name
+        printf("%s\n", file_name);        //shows on the screen what's the name of file *.txt
+    }
+    free(file_name);
+}
