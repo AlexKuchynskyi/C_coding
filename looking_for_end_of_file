@@ -1,0 +1,58 @@
+/*
+	 * Looking for the end of file
+	 */
+	        
+	#include <stdio.h>
+	 
+	int main(int argc, char* argv[])
+	{
+	    // ensure proper usage
+	    if (argc != 2)
+	    {
+	        printf("Usage: ./look_for_eof filename.*\n");
+	        return 1;
+	    }
+	 
+	    // getting name of the file to work with
+	    char* file_to_work = argv[1];
+	     
+	    printf("Opening file: ");
+	 
+	    // open input file 
+	    FILE* inptrFile = fopen(file_to_work, "r"); //want to open file 
+	    if (inptrFile == NULL)
+	    {
+	        printf("Could not open %s.\n", file_to_work);
+	        return 2;
+	    }
+	    else {printf("Done.\n");}
+	     
+	    int file_data;
+	     
+	    //reading byte after byte from file
+	    while (1)
+	    {
+	        file_data = fgetc(inptrFile);
+	        if (file_data == EOF) //checking for the end of file
+	        {
+	            if (feof(inptrFile) != 0)//check: is it really EOF or error?
+	            {
+	                printf("\nFinished reading file\n");
+	                break;
+	            }
+	            else
+	            {
+	                printf("\nReading file failed\n");
+	                break;
+	            }
+	        }
+	        //if not EOF and not an error
+	        //print the file data
+	        printf("%d", file_data);
+	    }
+	    printf("Closing the file: ");
+	    if (fclose(inptrFile) == EOF) printf("Closing failed.\n");
+	    else printf("Done.\n");
+	     
+	    return 0;
+	}
