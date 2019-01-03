@@ -1,0 +1,43 @@
+/**
+	 * Gives the initials from name which user inputted
+   * the correct input is: any letters (no other symbols), any register,
+   * any number of spaces in the beginning or in the end of the input
+*/
+
+#include <stdio.h>
+#include <cs50.h>
+#include <string.h>
+#include <ctype.h>
+
+int main(void)
+{
+    string name = GetString();
+    int counter = 1;
+    int number_of_words;
+    //string first = toupper(name[0]);
+    //string second = ' ';
+    for (int i = 0, length = strlen(name); i < length; i++ )
+    {
+        if (name[i] == ' ')
+        {
+            counter = counter + 1;
+        }
+        number_of_words = counter;
+    }
+    char initials[number_of_words];
+    initials[0] = toupper(name[0]);
+    counter = 1;
+    for (int i = 1, length = strlen(name); i < length; i++ )
+    {
+        if (name[i] == ' ')
+        {
+            initials[counter] = toupper(name[i+1]);
+            counter = counter + 1;
+        }
+    }   
+    for (int i = 0; i < number_of_words; i++ )
+    {
+       printf("%c", initials[i]);
+    }
+    printf("\n");
+}
