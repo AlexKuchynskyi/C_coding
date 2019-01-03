@@ -1,0 +1,34 @@
+
+
+# include <stdio.h>
+# include <cs50.h>
+# include <math.h>
+
+int main(void)
+{
+    float chislo;
+    do
+    {
+        printf("Please, input your amount of money:");
+        chislo = GetFloat();
+    }
+    while (chislo < 0);
+    
+    int money = round(chislo * 100);
+    
+    int kol_vo;
+    int ostatok;
+    
+    kol_vo = money / 25;
+    ostatok = money % 25;
+    
+    kol_vo = kol_vo + ostatok / 10;
+    ostatok = ostatok % 10;
+    
+    kol_vo = kol_vo + ostatok / 5;
+    ostatok = ostatok % 5;
+    
+    kol_vo = kol_vo + ostatok / 1;
+    
+    printf("Number is: %d\n", kol_vo);
+}
