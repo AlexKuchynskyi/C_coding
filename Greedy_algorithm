@@ -1,4 +1,9 @@
-
+/**
+	 * The program gives minimal amount of coins according to the sum user input.
+     * The program implements [Greedy algorithm](https://en.wikipedia.org/wiki/Greedy_algorithm) which determines 
+     * (in this very case) minimum number of coins to give while making change. As an example: 36 cents using only coins 
+     * with values {1, 5, 10, 20}. 
+*/
 
 # include <stdio.h>
 # include <cs50.h>
