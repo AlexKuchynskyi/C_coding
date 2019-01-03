@@ -1,0 +1,62 @@
+/**
+	 * Gets positive integer known as shift_number
+   * Gets user's input and each letter in the user's input is replaced by a letter 
+   * whith position of shift_number positions down the alphabet
+*/
+
+#include <stdio.h>
+#include <cs50.h>
+#include <string.h>
+#include <ctype.h>
+#include <stdlib.h>
+
+int main(int argc, string argv[])
+{
+    if (argc == 2)
+    {
+        int k = atoi(argv[1]);
+        if (k != 0)
+        {
+            string plaintext = GetString();
+            
+            int ascii_num, cipher_alphbt;
+            char result_letter;
+            for (int i = 0, len = strlen(plaintext); i < len; i++)
+            {
+                if (isalpha(plaintext[i]))
+                {
+                    if (isupper(plaintext[i]))
+                    {
+                        ascii_num = plaintext[i];
+                        cipher_alphbt = ((ascii_num - 65) + k) % 26;
+                        result_letter = cipher_alphbt + 65;
+                        printf("%c", result_letter);
+                    }
+                    if (islower(plaintext[i]))
+                    {
+                        ascii_num = plaintext[i];
+                        cipher_alphbt = ((ascii_num - 97) + k) % 26;
+                        result_letter = cipher_alphbt + 97;
+                        printf("%c", result_letter);
+                    }
+                    
+                }
+                else 
+                {
+                    printf("%c", plaintext[i]);
+                }
+            }
+            printf("\n");
+        }
+        else 
+        {
+            printf("Invalid key format\n");
+            return 1;
+        }    
+    }
+    else 
+    {
+        printf("Invalid key\n");
+        return 1;
+    }    
+}
