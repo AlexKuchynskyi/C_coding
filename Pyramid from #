@@ -1,0 +1,35 @@
+/* Print pyramid from '#' signs
+  *maximum size 23
+  */
+  
+
+# include <stdio.h>
+# include <cs50.h>
+
+int main(void)
+{
+    int size;
+    do
+    {
+        printf("State your pyramid' size:");
+        size = GetInt();
+    }
+    while (size < 0 || size > 23);
+  
+    for (int i = 0; i <= size; i++)
+    {
+        if (i != 0)
+        {
+            for (int j = 0; j < size-i; j++)
+                printf(" ");
+        }
+        for (int j = 0; j < i; j++)
+            printf("#");
+            
+        if (i != 0) 
+        {
+            printf("#");
+            printf("\n");
+        }    
+    }
+}
