@@ -1,0 +1,66 @@
+/**
+	 * Gets a keyword (alphabetical characters only)
+   * Gets user's input which supposed to be ciphered with Vigenere's cipher
+   * Outputs user's input ciphered
+*/
+
+#include <stdio.h>
+#include <cs50.h>
+#include <string.h>
+#include <ctype.h>
+#include <stdlib.h>
+
+int main(int argc, string argv[])
+{
+    if (argc == 2)
+    {
+        string key = argv[1];
+        int key_length = strlen(key);
+        for (int i = 0; i < key_length; i++) //Проверка наличия посторонних символов в ключе
+        {
+            if (isalpha(key[i]) == 0)
+            {
+                printf("Invalid key format\n");
+                return 1;
+            }
+        }
+        //printf("Input plaintext: ");
+        string plaintext = GetString();
+        int ascii_text, ascii_key, cipher_alphbt;
+        char result_letter;
+        int counter = 0;
+        for (int i = 0, len = strlen(plaintext); i < len; i++)
+            {
+                if (isalpha(plaintext[i]))
+                {
+                    if (isupper(plaintext[i]))
+                    {
+                        ascii_text = plaintext[i];
+                        ascii_key = toupper(key[(i-counter) % key_length]);
+                        cipher_alphbt = ((ascii_text - 65) + (ascii_key - 65)) % 26;
+                        result_letter = cipher_alphbt + 65;
+                        printf("%c", result_letter);
+                    }
+                    if (islower(plaintext[i]))
+                    {
+                        ascii_text = plaintext[i];
+                        ascii_key = tolower(key[(i-counter) % key_length]);
+                        cipher_alphbt = ((ascii_text - 97) + (ascii_key - 97)) % 26;
+                        result_letter = cipher_alphbt + 97;
+                        printf("%c", result_letter);
+                    }
+                }
+                else 
+                {
+                    printf("%c", plaintext[i]);
+                    counter++;
+                }
+            }
+            printf("\n");
+    }
+    else 
+    {
+        printf("Invalid key\n");
+        return 1;
+    }    
+}
