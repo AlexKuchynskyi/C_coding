@@ -1,7 +1,7 @@
 # C_coding
 
 Here are some progs on C which might be useful.  
-Find the one you're interested in and click  
+
 [Caesar](https://github.com/AlexKuchynskyi/C_coding/blob/master/Caesar_cipher) cipher  
 [Count](https://github.com/AlexKuchynskyi/C_coding/blob/master/counting_file) file's memory size  
 [Greedy algorithm](https://github.com/AlexKuchynskyi/C_coding/blob/master/Greedy_algorithm) implementation  
