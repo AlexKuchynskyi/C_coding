@@ -3,37 +3,57 @@
      * The program implements Greedy algorithm which determines (in this very case) 
      * minimum number of coins to give while making change. As an example: 36 cents gives only 
      * coins with values {1, 5, 10, 20}. 
+     Possible input range is from 0 to 10.00, but it can be changed in function.
 */
 
-# include <stdio.h>
-# include <cs50.h>
-# include <math.h>
+#include <cs50.h>
+#include <stdio.h>
+#include <math.h>
+
+int get_correct_input (string prompt);
 
 int main(void)
 {
-    float chislo;
+    int cents = get_correct_input ("Change owed? (from 0.0 to 10.00)... ");
+    printf("The amount of cents: %i\n", cents);
+    int counter = 0;
+    int rest = cents;
+    
+    // counting quarters
+    counter = cents / 25;
+    rest = cents % 25;
+    printf("Quarters: %i, and %i cents left\n", counter, rest);
+    
+    // counting dimes
+    int dimes = rest / 10;
+    counter = counter + dimes;
+    rest = rest % 10;
+    printf("Dimes: %i, and %i cents left\n", dimes, rest); 
+    
+    // counting nickels
+    int nickels = rest / 5;
+    counter = counter + nickels;
+    rest = rest % 5;
+    printf("Nickels: %i, and %i cents left\n", nickels, rest); 
+    
+    // counting pennies
+    int pennies = rest / 1;
+    counter = counter + pennies;
+    printf("Pennies: %i\n", pennies); 
+    
+    printf("Total minimun amount of coins possible:\n");
+    printf("%i\n", counter);
+}
+
+int get_correct_input(string prompt)
+{
+    int n;
+    float change;
     do
     {
-        printf("Please, input your amount of money:");
-        chislo = GetFloat();
+        change = get_float("%s", prompt);
+        n = round(change * 100);
     }
-    while (chislo < 0);
-    
-    int money = round(chislo * 100);
-    
-    int kol_vo;
-    int ostatok;
-    
-    kol_vo = money / 25;
-    ostatok = money % 25;
-    
-    kol_vo = kol_vo + ostatok / 10;
-    ostatok = ostatok % 10;
-    
-    kol_vo = kol_vo + ostatok / 5;
-    ostatok = ostatok % 5;
-    
-    kol_vo = kol_vo + ostatok / 1;
-    
-    printf("Number is: %d\n", kol_vo);
+    while (n>1000 || n<0);
+    return n;
 }
