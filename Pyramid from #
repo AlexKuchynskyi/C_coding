@@ -1,35 +1,39 @@
 /* Print pyramid from '#' signs
-  *maximum size 23
+  *maximum size 8
   */
   
 
-# include <stdio.h>
-# include <cs50.h>
+#include <cs50.h>
+#include <stdio.h>
+
+int get_positive_int (string prompt);
 
 int main(void)
 {
-    int size;
-    do
+    int height = get_positive_int ("What's the height? (from 1 to 8)... ");
+    // printf("Height: %i\n", height);
+    int space = 0;
+    for (int i=1; i<=height; i++)
     {
-        printf("State your pyramid' size:");
-        size = GetInt();
-    }
-    while (size < 0 || size > 23);
-  
-    for (int i = 0; i <= size; i++)
-    {
-        if (i != 0)
+        space=height-i;
+        for (int j=1; j<=space; j++)
         {
-            for (int j = 0; j < size-i; j++)
-                printf(" ");
+            printf(" ");
         }
-        for (int j = 0; j < i; j++)
-            printf("#");
-            
-        if (i != 0) 
+        for (int k=1; k<=i; k++)
         {
             printf("#");
-            printf("\n");
-        }    
+        }
+        printf("\n");
     }
+}
+
+// function checks for correct input
+int get_positive_int(string prompt)
+{
+    int n;
+    do
+        n = get_int("%s", prompt);
+    while (n>8 || n<1);
+    return n;
 }
