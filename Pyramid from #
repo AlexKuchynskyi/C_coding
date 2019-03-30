@@ -16,19 +16,25 @@ int main(void)
     for (int i=1; i<=height; i++)
     {
         space=height-i;
-        for (int j=1; j<=space; j++)
+        for (int j=1; j<=space; j++) // drawing spaces before # signs
         {
             printf(" ");
         }
-        for (int k=1; k<=i; k++)
+        for (int k=1; k<=i; k++) // drawing ascending half-pyramid
+        {
+            printf("#");
+        }
+        printf("  "); //double space between half-pyramids
+        for (int k=1; k<=i; k++) // drawind descending half-pyramid
         {
             printf("#");
         }
         printf("\n");
     }
+    
 }
 
-// function checks for correct input
+// function checking for correct input
 int get_positive_int(string prompt)
 {
     int n;
